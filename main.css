@@ -6,3 +6,7 @@
 body{
     background-color: gainsboro;
 }
+
+.game__counter {
+    color: red;
+}
