@@ -8,7 +8,24 @@
     <title>Guess the number app</title>
 </head>
 <body>
-    hola
+    <h1 class="main-title">Adivina el número</h1>
+
+    <main class="game">
+        <h2 class="game__counter">0</h2>
+
+        <form action="post" class="game__form">
+            <label for="testNumber">Introduce aquí tu número</label>
+            <input type="text" name="testNumber" id="testNumber">
+
+            <button class="btn--try" type="submit">Prueba</button>
+        </form>
+    </main>
+
+    <footer class="main-footer">
+        <p class="game__instructions">
+            Escribe un número y dale a Prueba
+        </p>
+    </footer>
 
     <script type="text/javascript" src="main.js"></script>
 </body>
