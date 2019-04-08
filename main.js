@@ -34,6 +34,25 @@ let acc = 0;
 // Check if I have the right elements
 // console.log(btnTryEl, inputEl, counterEl);
 
+// Evaluate if the number of the user (userTrial) is bigger ("demasiado alto"), smaller ("demasiado bajo") or is the one ("HAS GANADO CAMPEONAA!!");
+
+function evaluateNumber(x) {
+    const message = "";
+    if(x===randomNumber) {
+        const message = "HAS GANADO CAMPEONAA!!";
+        console.log(message);
+        return gameTipsEl.innerHTML = message;
+    } else if(x>randomNumber) {
+        const message = "Demasiado alto";
+        console.log(message);
+        return gameTipsEl.innerHTML = message;
+    } else {
+        const message = "Demasiado bajo"
+        console.log(message);
+        return gameTipsEl.innerHTML = message;
+    }
+};
+
 //Add handler function to the button
 function handlerGame(event) {
     //Need to prevent the default behaviour through the method:
@@ -44,23 +63,7 @@ function handlerGame(event) {
     const userTrial = parseInt(inputEl.value);
     console.log(userTrial);
 
-    //Evaluate if the number of the user (userTrial) is bigger ("demasiado alto"), smaller ("demasiado bajo") or is the one ("HAS GANADO CAMPEONAA!!");
-    function evaluateNumber(x) {
-        const message = "";
-        if(x===randomNumber) {
-            const message = "HAS GANADO CAMPEONAA!!";
-            console.log(message);
-            return gameTipsEl.innerHTML = message;
-        } else if(x>randomNumber) {
-            const message = "Demasiado alto";
-            console.log(message);
-            return gameTipsEl.innerHTML = message;
-        } else {
-            const message = "Demasiado bajo"
-            console.log(message);
-            return gameTipsEl.innerHTML = message;
-        }
-    };
+    //Call the function that evaluates the number and show results 
     evaluateNumber(userTrial);
 
     //Now count the number of trials through a function
