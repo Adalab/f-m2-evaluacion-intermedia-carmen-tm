@@ -4,7 +4,6 @@ console.log(">>> ready");
 
 //The app should create a random number between 1-100, and the player try to guess it. The app gives tips to guess it (is smaller, is bigger...) and track the number of trials, till the player "wins" (match the number).
 
-
 //Create basic html structure
 //TODO: give propper styles>>main.css 
 
@@ -21,10 +20,14 @@ console.log(`The random number is... ${randomNumber}.`);
 //Configure the form-button to get the number and show it in the console.
 //Get button element
 const btnTryEl = document.querySelector(".btn--try");
+
 //Get the input element on the form
 const inputEl = document.querySelector("#testNumber");
+// console.dir(inputEl);
+
 //Get the counter element
-const counterEl = document.querySelector(".game__counter")
+const counterEl = document.querySelector(".game__counter");
+
 //Get the game description element to show tips
 const gameTipsEl = document.querySelector(".game__instructions");
 
@@ -40,26 +43,34 @@ function handlerGame(event) {
     event.preventDefault();
     // console.log("his is working :)");
 
-    //Show the input value on the console (converted to number through parsing)
-    const userTrial = parseInt(inputEl.value);
+    //Show the input value on the console
+    const userTrial = inputEl.value;
     console.log(userTrial);
 
     //Evaluate if the number of the user (userTrial) is bigger ("demasiado alto"), smaller ("demasiado bajo") or is the one ("HAS GANADO CAMPEONAA!!");
     function evaluateNumber(x) {
         const message = "";
-        if(x===randomNumber) {
+        //What if the value is empty?
+        if (x === "") {
+            const message = "No has introducido ningún número, atrévete a jugar!";
+            console.log(message);
+            return gameTipsEl.innerHTML = message;
+        } //If the number is the one
+        else if (x === parseInt(randomNumber)) {
             const message = "HAS GANADO CAMPEONAA!!";
             console.log(message);
             return gameTipsEl.innerHTML = message;
-        } else if(x>randomNumber) {
+        }  //If the number is bigger
+        else if (x > parseInt(randomNumber)) {
             const message = "Demasiado alto";
             console.log(message);
             return gameTipsEl.innerHTML = message;
-        } else {
+        } //If the number is smaller (rest of cases)
+        else {
             const message = "Demasiado bajo"
             console.log(message);
             return gameTipsEl.innerHTML = message;
-        }
+        };
     };
     evaluateNumber(userTrial);
 
