@@ -11,8 +11,8 @@ You are more than welcome to contribute and improve this code with any crazy new
 This project is licensed under the [MIT License](https://en.wikipedia.org/wiki/MIT_License).
 
 ## Authors
-* Original idea: **Adalab** | [Github](https://github.com/Adalab) | [webiste](http://adalab.es/) |
+* Original idea: **Adalab** | [Github](https://github.com/Adalab) | [website](http://adalab.es/) |
 * Development and variations: **Carmen Torrecillas** | [Github](https://github.com/) | [Twitter](https://twitter.com/carmen_TM_) |
 
-## Acknowledgemnts
-[Nasiva](https://github.com/Adalab/f-m2-evaluacion-intermedia-carmen-tm/issues/created_by/nasivuela) | for her patient and precious feedbacks!
+## Acknowledgments
+[Nasiba](https://github.com/Adalab/f-m2-evaluacion-intermedia-carmen-tm/issues/created_by/nasivuela) for her patient and precious feedbacks!
