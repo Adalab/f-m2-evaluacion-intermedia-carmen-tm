@@ -35,17 +35,43 @@ function paintGameTips(a) {
 }
 
 // Evaluate if the number of the user (userTrial) is bigger ("demasiado alto"), smaller ("demasiado bajo") or is the one ("HAS GANADO CAMPEONAA!!"):
-function evaluateNumber(x) {
+// function evaluateNumber(x) {
+//     const message = "";
+//     if(x===randomNumber) {
+//         const message = "HAS GANADO CAMPEONAA!!";
+//         return paintGameTips(message);
+//     } else if(x>randomNumber) {
+//         const message = "Demasiado alto";
+//         return paintGameTips(message);
+//     } else {
+//         const message = "Demasiado bajo"
+//         return paintGameTips(message);
+//     }
+// }
+
+function evaluateNumber2(x,y) {
     const message = "";
-    if(x===randomNumber) {
-        const message = "HAS GANADO CAMPEONAA!!";
-        return paintGameTips(message);
-    } else if(x>randomNumber) {
-        const message = "Demasiado alto";
+
+    if(x==="") {
+        const message = "No seas tímid@, mete un número!";
         return paintGameTips(message);
     } else {
-        const message = "Demasiado bajo"
-        return paintGameTips(message);
+        if(y===randomNumber) {
+            const message = "HAS GANADO CAMPEONAA!!";
+            return paintGameTips(message);
+
+        } else if((y>randomNumber) && (y<100)) {
+            const message = "Demasiado alto...";
+            return paintGameTips(message);
+
+        } else if ((y<randomNumber) && (y>0)){
+            const message = "Demasiado bajo..."
+            return paintGameTips(message);
+
+        } else if((y>100) || (y<0)) {
+            const message = "Demasiado lejos...! Sólo números del 1 al 100!";
+            return paintGameTips(message);
+        }
     }
 }
 
@@ -61,12 +87,14 @@ function handlerGame(event) {
     //Need to prevent the default behaviour through the method:
     event.preventDefault();
 
-    //Show the input value on the console (converted to number through parsing)
-    const userTrial = parseInt(inputEl.value);
-    console.log(userTrial);
+    //Save user number each time 
+    const userTrial = (inputEl.value);
+    //Converted to number (parsing)
+    const userTrialParsed = parseInt(userTrial);
+    console.log(userTrial, userTrialParsed);
 
     //Call the function that evaluates the number and show results 
-    evaluateNumber(userTrial);
+    evaluateNumber2(userTrial,userTrialParsed);
 
     //Call the function that sets the accumulator according to the user's trials; 
     countUserTrials();
