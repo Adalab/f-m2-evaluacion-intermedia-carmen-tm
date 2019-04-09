@@ -7,14 +7,6 @@ console.log(">>> ready");
 //Create basic html structure
 //TODO: give propper styles>>main.css 
 
-//Generate random number (from Codepen example):
-function getRandomNumber(max) {
-    return Math.ceil(Math.random() * max);
-}
-
-const randomNumber = getRandomNumber(100);
-console.log(`The random number is... ${randomNumber}.`);
-
 //Configure the form-button to get the number and show it in the console.
 //Get button element
 const btnTryEl = document.querySelector(".btn--try");
@@ -28,22 +20,40 @@ const gameTipsEl = document.querySelector(".game__instructions");
 // Create an accumulator of the user's trials
 let acc = 0;
 
-// Evaluate if the number of the user (userTrial) is bigger ("demasiado alto"), smaller ("demasiado bajo") or is the one ("HAS GANADO CAMPEONAA!!");
+//Generate random number (from Codepen example):
+function getRandomNumber(max) {
+    return Math.ceil(Math.random() * max);
+}
+//Save my random number in a constant for comparison:
+const randomNumber = getRandomNumber(100);
+console.log(`The random number is... ${randomNumber}.`);
+
+//Function that accepts a string (a message) as parameter and paints it ito gameTipsEl:
+function paintGameTips(a) {
+    console.log(a);
+    return gameTipsEl.innerHTML = a;
+}
+
+// Evaluate if the number of the user (userTrial) is bigger ("demasiado alto"), smaller ("demasiado bajo") or is the one ("HAS GANADO CAMPEONAA!!"):
 function evaluateNumber(x) {
     const message = "";
     if(x===randomNumber) {
         const message = "HAS GANADO CAMPEONAA!!";
-        console.log(message);
-        return gameTipsEl.innerHTML = message;
+        return paintGameTips(message);
     } else if(x>randomNumber) {
         const message = "Demasiado alto";
-        console.log(message);
-        return gameTipsEl.innerHTML = message;
+        return paintGameTips(message);
     } else {
         const message = "Demasiado bajo"
-        console.log(message);
-        return gameTipsEl.innerHTML = message;
+        return paintGameTips(message);
     }
+}
+
+//Count the number of trials through a function
+function countUserTrials() {
+    //equals to acc += 1
+    acc = acc + 1;
+    counterEl.innerHTML = acc;
 }
 
 //Add handler function to the button
@@ -58,11 +68,7 @@ function handlerGame(event) {
     //Call the function that evaluates the number and show results 
     evaluateNumber(userTrial);
 
-    //Now count the number of trials through a function
-    function countUserTrials() {
-        acc = acc + parseInt(1);
-        counterEl.innerHTML = acc;
-    }
+    //Call the function that sets the accumulator according to the user's trials; 
     countUserTrials();
 }
 
