@@ -1,6 +1,6 @@
 "use strict";
 
-console.log(">>> ready");
+console.log(">>> ready to play!");
 
 //The app should create a random number between 1-100, and the player try to guess it. The app gives tips to guess it (is smaller, is bigger...) and track the number of trials, till the player "wins" (match the number).
 
@@ -34,45 +34,37 @@ function paintGameTips(a) {
     return gameTipsEl.innerHTML = a;
 }
 
-// Evaluate if the number of the user (userTrial) is bigger ("demasiado alto"), smaller ("demasiado bajo") or is the one ("HAS GANADO CAMPEONAA!!"):
-// function evaluateNumber(x) {
-//     const message = "";
-//     if(x===randomNumber) {
-//         const message = "HAS GANADO CAMPEONAA!!";
-//         return paintGameTips(message);
-//     } else if(x>randomNumber) {
-//         const message = "Demasiado alto";
-//         return paintGameTips(message);
-//     } else {
-//         const message = "Demasiado bajo"
-//         return paintGameTips(message);
-//     }
-// }
+//If the input is empty will return a true on the isNaN test, and will call this function
+function emptyValue(){
+    const message = "No seas tímid@, atrévete a jugar y escribe un número!";
+    return paintGameTips(message);
+}
 
-function evaluateNumber2(x,y) {
-    const message = "";
-
-    if(x==="") {
-        const message = "No seas tímid@, mete un número!";
+//If the input has a value will return false on the isNaN test, and will call this function
+function gameTips(x){
+    if(x===randomNumber) {
+        const message = "HAS GANADO CAMPEONAA!!";
         return paintGameTips(message);
-    } else {
-        if(y===randomNumber) {
-            const message = "HAS GANADO CAMPEONAA!!";
-            return paintGameTips(message);
 
-        } else if((y>randomNumber) && (y<100)) {
-            const message = "Demasiado alto...";
-            return paintGameTips(message);
+    } else if((x>randomNumber) && (x<=100)) {
+        const message = "Demasiado alto...";
+        return paintGameTips(message);
 
-        } else if ((y<randomNumber) && (y>0)){
-            const message = "Demasiado bajo..."
-            return paintGameTips(message);
+    } else if ((x<randomNumber) && (x>0)){
+        const message = "Demasiado bajo..."
+        return paintGameTips(message);
 
-        } else if((y>100) || (y<0)) {
-            const message = "Demasiado lejos...! Sólo números del 1 al 100!";
-            return paintGameTips(message);
-        }
+    } else if((x>100) || (x<0)) {
+        const message = "Demasiado lejos...! Sólo números del 1 al 100!";
+        return paintGameTips(message);
     }
+}
+
+//What about if we use the isNaN() method to test the input?
+function evaluateNumber3(x) {
+    //Evaluate if the input is empty (will return a true on the isNaN test, and will call a function) or it has a value (will return false and will call the gameTips function)
+    const testInput = isNaN(x) ? emptyValue() : gameTips(x);
+    // console.log(isNaN(x));
 }
 
 //Count the number of trials through a function
@@ -91,10 +83,11 @@ function handlerGame(event) {
     const userTrial = (inputEl.value);
     //Converted to number (parsing)
     const userTrialParsed = parseInt(userTrial);
-    console.log(userTrial, userTrialParsed);
+    // console.log(userTrial, userTrialParsed);
 
     //Call the function that evaluates the number and show results 
-    evaluateNumber2(userTrial,userTrialParsed);
+    // evaluateNumber2(userTrial,userTrialParsed);
+    evaluateNumber3(userTrialParsed);
 
     //Call the function that sets the accumulator according to the user's trials; 
     countUserTrials();
