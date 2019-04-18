@@ -59,11 +59,8 @@ function gameTips(x){
         return paintGameTips(message);
     }
 }
-
-//What about if we use the isNaN() method to test the input?
+//Evaluate if the input is truthy (the user wrote a number) or falsy (for example click on the button with an empty value). If there is number, invoke the function for giving tips. If not, display a message encouragig to play.
 function evaluateNumber3(x) {
-    //Evaluate if the input is truthy (the user wrote a number) or falsy (for example click on the button with an empty value). If there is number, invoke the function for giving tips. If not, display a message encouragig to play.
-    // console.log(isNaN(x));
     x ? gameTips(x) : emptyValue();
 }
 
