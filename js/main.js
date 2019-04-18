@@ -62,9 +62,9 @@ function gameTips(x){
 
 //What about if we use the isNaN() method to test the input?
 function evaluateNumber3(x) {
-    //Evaluate if the input is empty (will return a true on the isNaN test, and will call a function) or it has a value (will return false and will call the gameTips function)
-    const testInput = isNaN(x) ? emptyValue() : gameTips(x);
+    //Evaluate if the input is truthy (the user wrote a number) or falsy (for example click on the button with an empty value). If there is number, invoke the function for giving tips. If not, display a message encouragig to play.
     // console.log(isNaN(x));
+    x ? gameTips(x) : emptyValue();
 }
 
 //Count the number of trials through a function
